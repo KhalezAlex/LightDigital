@@ -1,6 +1,10 @@
 spring:
-  r2dbc:
-    url: r2dbc:postgres://localhost:5432/lightDigitalTest
+#  r2dbc:
+#    url: r2dbc:postgres://localhost:5432/lightDigitalTest
+#    username: postgres
+#    password: ItsMyLife0203
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lightDigitalTest
     username: postgres
     password: ItsMyLife0203
   flyway:
