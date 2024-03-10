@@ -14,11 +14,11 @@ CREATE TABLE authority_t (
     authority varchar(20) NOT NULL UNIQUE
 );
 
-CREATE TABLE request_t (
+CREATE TABLE claim_t (
     id SERIAL PRIMARY KEY,
     name varchar(30) NOT NULL,
     phone varchar(12) NOT NULL UNIQUE,
     status varchar(20) NOT NULL,
-    request varchar(1024) NOT NULL,
+    claim varchar(1024) NOT NULL,
     comment varchar(256)
 );

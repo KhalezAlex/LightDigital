@@ -18,3 +18,7 @@ spring:
 #    hibernate:
 #      ddl-auto: update
 
+#jwt:
+##  secret:
+#  secret: test_light_digital
+#  lifetime: 2m
