@@ -1,7 +1,13 @@
+DROP TABLE IF EXISTS user_t;
+DROP TABLE IF EXISTS role_t;
+DROP TABLE IF EXISTS claim_t;
+DROP TABLE IF EXISTS user_role_t;
+
 CREATE TABLE user_t (
     id SERIAL PRIMARY KEY,
     username varchar(20) NOT NULL UNIQUE,
-    password varchar(256) NOT NULL
+    password varchar(256) NOT NULL,
+    created timestamp DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE role_t (
@@ -9,16 +15,13 @@ CREATE TABLE role_t (
     role varchar(20) NOT NULL UNIQUE
 );
 
-CREATE TABLE authority_t (
-    id SERIAL PRIMARY KEY,
-    authority varchar(20) NOT NULL UNIQUE
-);
-
 CREATE TABLE claim_t (
     id SERIAL PRIMARY KEY,
-    name varchar(30) NOT NULL,
-    phone varchar(12) NOT NULL UNIQUE,
+    caption varchar(30) NOT NULL,
+    phone varchar(12) NOT NULL,
     status varchar(20) NOT NULL,
     claim varchar(1024) NOT NULL,
+    created timestamp DEFAULT CURRENT_TIMESTAMP,
+    updated timestamp DEFAULT CURRENT_TIMESTAMP,
     comment varchar(256)
 );

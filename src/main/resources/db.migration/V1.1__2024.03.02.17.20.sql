@@ -4,8 +4,5 @@ CREATE TABLE user_role_t (
     role_id int REFERENCES role_t(id)
 );
 
-ALTER TABLE authority_t
-    ADD COLUMN role_id int REFERENCES role_t(id);
-
 ALTER TABLE claim_t
     ADD COLUMN user_id int REFERENCES user_t(id);

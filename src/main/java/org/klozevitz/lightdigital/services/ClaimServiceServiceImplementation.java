@@ -25,7 +25,7 @@ public class ClaimServiceServiceImplementation implements ClaimService {
 
     @Override
     public Claim save(Claim claim) {
-        return null;
+        return repo.save(claim);
     }
 
     @Override

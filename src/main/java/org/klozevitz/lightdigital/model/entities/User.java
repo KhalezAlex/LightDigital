@@ -5,6 +5,7 @@ import lombok.Data;
 import org.klozevitz.lightdigital.model.BaseEntity;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class User extends BaseEntity {
     private String password;
     @CreatedDate
     @Column(name = "created")
-    private Date created;
+    private LocalDate created;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role_t",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
