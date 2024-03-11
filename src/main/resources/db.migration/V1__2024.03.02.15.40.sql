@@ -22,6 +22,5 @@ CREATE TABLE claim_t (
     status varchar(20) NOT NULL,
     claim varchar(1024) NOT NULL,
     created timestamp DEFAULT CURRENT_TIMESTAMP,
-    updated timestamp DEFAULT CURRENT_TIMESTAMP,
-    comment varchar(256)
+    updated timestamp DEFAULT CURRENT_TIMESTAMP
 );

@@ -27,8 +27,6 @@ public class Claim extends BaseEntity {
     private ClaimStatus status;
     @Column(name = "claim")
     private String claim;
-    @Column(name = "comment")
-    private String comment;
     @Column(name = "created")
     private LocalDate created;
     @Column(name = "updated")
@@ -36,6 +34,19 @@ public class Claim extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    public void patchDraft(ClaimDTO dto) {
+        this.caption = dto.getCaption();
+        this.phone = dto.getPhone();
+        this.status = ClaimStatus.ЧЕРНОВИК;
+        this.claim = dto.getClaim();
+        this.updated = LocalDate.now();
+    }
+
+    public void send() {
+        this.status = ClaimStatus.ОТПРАВЛЕНО;
+        this.updated = LocalDate.now();
+    }
 
     @Override
     public String toString() {
@@ -45,7 +56,6 @@ public class Claim extends BaseEntity {
                 ", phone='" + phone + '\'' +
                 ", status=" + status +
                 ", claim='" + claim + '\'' +
-                ", comment='" + comment + '\'' +
                 ", created=" + created +
                 ", updated=" + updated +
                 ", user=" + user +
@@ -58,7 +68,6 @@ public class Claim extends BaseEntity {
                 .phone(dto.getPhone())
                 .status(dto.getStatus())
                 .claim(dto.getClaim())
-                .comment(dto.getComment())
                 .build();
         claim.setId(dto.getId());
         return claim;

@@ -1,4 +1,4 @@
-package org.klozevitz.lightdigital.services;
+package org.klozevitz.lightdigital.dao.services;
 
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.lightdigital.dao.serviceInterfaces.UserService;

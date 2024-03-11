@@ -1,4 +1,4 @@
-package org.klozevitz.lightdigital.services;
+package org.klozevitz.lightdigital.dao.services;
 
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.lightdigital.dao.serviceInterfaces.ClaimService;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ClaimServiceServiceImplementation implements ClaimService {
+public class ClaimServiceImplementation implements ClaimService {
     private final ClaimRepository repo;
 
     @Override
@@ -20,7 +20,7 @@ public class ClaimServiceServiceImplementation implements ClaimService {
 
     @Override
     public Claim findById(int id) {
-        return null;
+        return repo.findById(id).orElse(null);
     }
 
     @Override

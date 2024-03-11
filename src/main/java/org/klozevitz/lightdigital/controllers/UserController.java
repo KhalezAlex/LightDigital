@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 
 @RestController
-@RequestMapping("/api/claim")
+@RequestMapping("/api/user/claim")
 @RequiredArgsConstructor
-public class ClaimController {
+public class UserController {
     private final ClaimService claimService;
     private final UserService userService;
 
@@ -29,4 +29,26 @@ public class ClaimController {
         claim.setUpdated(LocalDate.now());
         return claimService.save(claim);
     }
+
+    @PatchMapping
+    public ClaimDTO patchDraft(@RequestBody ClaimDTO dto) {
+        Claim draftToPatch = claimService.findById(dto.getId());
+        if (!draftToPatch.getStatus().equals(ClaimStatus.ЧЕРНОВИК)) {
+            return null;
+        }
+        draftToPatch.patchDraft(dto);
+        return ClaimDTO.fromEntity(claimService.save(draftToPatch));
+    }
+
+    @PatchMapping("/send")
+    public ClaimDTO send(@RequestParam int userId, @RequestParam int id) {
+        Claim claimToSend = claimService.findById(id);
+        if (claimToSend.getUser().getId() == userId && claimToSend.getStatus().equals(ClaimStatus.ЧЕРНОВИК)) {
+            claimToSend.send();
+            return ClaimDTO.fromEntity(claimService.save(claimToSend));
+        }
+        return null;
+    }
+
+
 }

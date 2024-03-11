@@ -1,4 +1,4 @@
-package org.klozevitz.lightdigital.services;
+package org.klozevitz.lightdigital.dao.services;
 
 import lombok.RequiredArgsConstructor;
 import org.klozevitz.lightdigital.dao.serviceInterfaces.RoleService;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class RoleServiceServiceImplementation implements RoleService {
+public class RoleServiceImplementation implements RoleService {
     private final RoleRepository repo;
 
     @Override

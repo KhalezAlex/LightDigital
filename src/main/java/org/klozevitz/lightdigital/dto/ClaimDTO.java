@@ -34,7 +34,6 @@ public class ClaimDTO {
                 .phone(claim.getPhone())
                 .status(claim.getStatus().name())
                 .claim(claim.getClaim())
-                .comment(claim.getComment())
                 .userId(claim.getUser().getId())
                 .build();
     }
